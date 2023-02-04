@@ -1,0 +1,61 @@
+<div class="section">
+    <h1>My Notes</h1>
+
+    <div class="box create-note">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote">Create New Note</button>
+    </div>
+
+    <div class="box note-list" *ngFor="let note of activeNotes">
+        <div class="card w-75 mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{note.title}}</h5>
+                <p class="card-text">{{note.note}}</p>
+                <div class="card-footer">
+                    <p class="text-muted"><small>Edited: {{note.modified}}</small></p>
+                </div>
+
+                <div class="buttons">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNote" (click)="editNote(note)">Edit</button>
+                    <button type="button" class="btn btn-secondary" (click)="archiveNote(note)">Archive</button>
+                    <button type="button" class="btn btn-danger" (click)="deleteNote(note)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Create notes -->
+<div class="modal fade" id="createNote" tabindex="-1" aria-labelledby="createNote" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Note</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm()"></button>
+        </div>
+
+        <div class="modal-body">
+            <form [formGroup]="noteDetail">
+                <div class="mb-3">
+                    <label for="noteTitle" class="form-label"></label>
+                    <input type="text" formControlName="title" class="form-control" id="noteTitle" aria-describedby="titlelHelp" placeholder="Title">
+                </div>
+
+                <div class="mb-3">
+                    <label for="note" class="form-label"></label>
+                    <textarea maxlength="255" class="form-control" formControlName="note" name="note" id="note" cols="30" rows="10" placeholder="Note"></textarea>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="createNote()">Create new</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateNote()">Update changes</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="resetForm()">Cancel</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+</div>

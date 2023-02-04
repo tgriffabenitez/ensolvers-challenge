@@ -1,0 +1,20 @@
+<div class="section">
+    <h1>Archived Notes</h1>
+
+    <div class="box note-list" *ngFor="let note of archivedNotes">
+        <div class="card w-75 mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{note.title}}</h5>
+                <p class="card-text">{{note.note}}</p>
+                <div class="card-footer">
+                    <p class="text-muted"><small>Edited: {{note.modified}}</small></p>
+                </div>
+
+                <div class="buttons">
+                    <button type="button" class="btn btn-secondary" (click)="restoreNote(note)">Restore</button>
+                    <button type="button" class="btn btn-danger" (click)="deleteNote(note)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
