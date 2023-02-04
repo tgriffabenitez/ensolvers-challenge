@@ -14,18 +14,4 @@ public class TomasGriffaApplication {
     public static void main(String[] args) {
         SpringApplication.run(TomasGriffaApplication.class, args);
     }
-
-    @Autowired
-    private NoteRepository noteRepository;
-
-    @Bean
-    public CommandLineRunner init() {
-        return args -> {
-            Note note1 = noteRepository.save(new Note("titulo 1", "cuerpo 1"));
-            Note note2 = noteRepository.save(new Note("titulo 1", "cuerpo 1"));
-            Note note3 = noteRepository.save(new Note("titulo 1", "cuerpo 1"));
-            Note note4 = noteRepository.save(new Note("titulo 1", "cuerpo 1"));
-
-        };
-    }
 }
