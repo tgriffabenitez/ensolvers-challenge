@@ -33,7 +33,7 @@ public class UserService {
     }
 
     public ResponseEntity<?> getUserActiveNotes(Integer userId) {
-        if (!userRepository.existsById(userId)) return new ResponseEntity<>("nop", HttpStatus.NOT_FOUND);
+        if (!userRepository.existsById(userId)) return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
 
         return new ResponseEntity<>(
                 em.createQuery("SELECT n FROM User u JOIN u.notes n WHERE u.id = :userId AND n.isActive = true")
