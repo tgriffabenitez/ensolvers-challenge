@@ -22,7 +22,7 @@ public class Note {
     @Column(name = "note")
     private String note;
 
-    @Column(name = "is_archived")
+    @Column(name = "is_active")
     private Boolean isActive;
 
     @Column(name = "created")

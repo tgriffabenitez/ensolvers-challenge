@@ -10,4 +10,5 @@ public class NoteDTO {
     private String title;
     private String note;
     private Boolean isActive;
+    private Integer userId;
 }
