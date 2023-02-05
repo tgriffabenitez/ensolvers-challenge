@@ -9,15 +9,15 @@ export class ArchivedServiceService {
   constructor(private http: HttpClient) { }
 
   public getArchivedNotes() {
-    return this.http.get("http://localhost:8080/archived")
+    return this.http.get("https://ensolvers-challenge-production.up.railway.app/archived/")
   }
 
   public patchRestoreNote(note: any) {
-    return this.http.patch("http://localhost:8080/" + note.id, note);
+    return this.http.patch("https://ensolvers-challenge-production.up.railway.app/" + note.id, note);
   }
 
   public deleteNote(note: any) {
-    return this.http.delete("http://localhost:8080/"+ note);
+    return this.http.delete("https://ensolvers-challenge-production.up.railway.app/"+ note);
   }
 
 

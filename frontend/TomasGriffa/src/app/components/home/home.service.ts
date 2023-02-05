@@ -10,22 +10,22 @@ export class HomeService {
   constructor(private http: HttpClient) { }
 
   public postCreateNote(data: any) {
-    return this.http.post('http://localhost:8080/', data);
+    return this.http.post('https://ensolvers-challenge-production.up.railway.app/', data);
   }
 
   public patchUpdateNote(data: any) {
-    return this.http.patch("http://localhost:8080/" + data.id, data);
+    return this.http.patch("https://ensolvers-challenge-production.up.railway.app/" + data.id, data);
   }
 
   public getActiveNotes() {
-    return this.http.get("http://localhost:8080/")
+    return this.http.get("https://ensolvers-challenge-production.up.railway.app/")
   }
 
   public deleteNote(note: any) {
-    return this.http.delete("http://localhost:8080/"+ note);
+    return this.http.delete("https://ensolvers-challenge-production.up.railway.app/"+ note);
   }
 
   public patchArchiveNote(note: any) {
-    return this.http.patch("http://localhost:8080/" + note.id, note);
+    return this.http.patch("https://ensolvers-challenge-production.up.railway.app/" + note.id, note);
   }
 }
