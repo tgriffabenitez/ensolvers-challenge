@@ -17,23 +17,23 @@ public class TomasGriffaApplication {
         SpringApplication.run(TomasGriffaApplication.class, args);
     }
 
-    @Autowired
-    private NoteRepository noteRepository;
-    @Autowired
-    private UserRepository userRepository;
-
-    @Bean
-    public CommandLineRunner init() {
-        return args -> {
-
-            Note note1 = noteRepository.save(new Note("Titulo 1", "nota 1"));
-            Note note2 = noteRepository.save(new Note("Titulo 2", "nota 2"));
-
-            User user = new User("admin@gmail.com", "1234");
-            user.addNote(note1);
-            user.addNote(note2);
-            userRepository.save(user);
-
-        };
-    }
+//    @Autowired
+//    private NoteRepository noteRepository;
+//    @Autowired
+//    private UserRepository userRepository;
+//
+//    @Bean
+//    public CommandLineRunner init() {
+//        return args -> {
+//
+//            Note note1 = noteRepository.save(new Note("Titulo 1", "nota 1"));
+//            Note note2 = noteRepository.save(new Note("Titulo 2", "nota 2"));
+//
+//            User user = new User("admin@gmail.com", "1234");
+//            user.addNote(note1);
+//            user.addNote(note2);
+//            userRepository.save(user);
+//
+//        };
+//    }
 }
