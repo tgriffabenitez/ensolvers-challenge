@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NoteClass } from '../home/note-class';
 import { ArchivedServiceService } from './archived-service.service';
 
@@ -10,20 +11,34 @@ import { ArchivedServiceService } from './archived-service.service';
 })
 export class ArchivedNotesComponent {
 
+  userId!: number;
+
   public archivedNotes: any;
 
-  constructor (private formBuilder: FormBuilder, private archivedService: ArchivedServiceService) { }
+  constructor (private formBuilder: FormBuilder, private archivedService: ArchivedServiceService, private router: Router) { }
 
   ngOnInit(): void {
+
+    if (localStorage.getItem("userId") == null) {
+      this.router.navigate(['']);
+
+    } else {
+      this.userId = parseInt(localStorage.getItem("userId")!, 10)
+    }
   
     this.getArchivedNotes();
 
   }
 
   getArchivedNotes() {
-    this.archivedService.getArchivedNotes().subscribe((data: any) => {
+    this.archivedService.getArchivedNotes(this.userId).subscribe((data: any) => {
       this.archivedNotes = data;
     });
+
+    if (localStorage.getItem("userId") == null) {
+      this.router.navigate(['']);
+  
+    }
   }
 
   restoreNote(note: NoteClass) {
@@ -35,10 +50,7 @@ export class ArchivedNotesComponent {
       isActive: true
     }
 
-    console.log(data);
-
     this.archivedService.patchRestoreNote(data).subscribe((res: any) => {
-      console.log(res);
       this.getArchivedNotes();      
     })
   }

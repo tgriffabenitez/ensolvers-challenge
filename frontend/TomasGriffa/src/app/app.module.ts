@@ -7,9 +7,10 @@ import { ComponentsComponent } from './components/components.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ArchivedNotesComponent } from './components/archived-notes/archived-notes.component'
+import { ArchivedNotesComponent } from './components/archived-notes/archived-notes.component';
+import { LoginComponent } from './components/login/login.component'
 
 @NgModule({
   declarations: [
@@ -18,13 +19,15 @@ import { ArchivedNotesComponent } from './components/archived-notes/archived-not
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    ArchivedNotesComponent
+    ArchivedNotesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

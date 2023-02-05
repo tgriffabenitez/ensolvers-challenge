@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HomeService } from './home.service';
 import { NoteClass } from './note-class';
 
@@ -10,6 +11,8 @@ import { NoteClass } from './note-class';
 })
 export class HomeComponent implements OnInit {
 
+  userId!: number;
+
   noteDetail !: FormGroup;
   noteObj: NoteClass = new NoteClass();
 
@@ -17,9 +20,17 @@ export class HomeComponent implements OnInit {
   activeNotes: any;
   archivedNotes: any;
 
-  constructor (private formBuilder: FormBuilder, private homeService: HomeService) { }
+
+  constructor (private formBuilder: FormBuilder, private homeService: HomeService, private router: Router) { }
 
   ngOnInit(): void {
+
+    if (localStorage.getItem("userId") == null) {
+      this.router.navigate(['']);
+
+    } else {
+      this.userId = parseInt(localStorage.getItem("userId")!, 10)
+    }
 
     this.noteDetail = this.formBuilder.group({
       id: [''],
@@ -36,15 +47,16 @@ export class HomeComponent implements OnInit {
 
     let data = {
       title: this.noteDetail.value.title,
-      note: this.noteDetail.value.note
+      note: this.noteDetail.value.note,
+      userId: this.userId
     }
+
 
     this.homeService.postCreateNote(data).subscribe(res => {
       this.getActiveNotes();
       this.resetForm();
       
     }, err =>  {
-      console.log(err);
 
     });
   }
@@ -64,18 +76,16 @@ export class HomeComponent implements OnInit {
   }
 
   getActiveNotes() {
-    this.homeService.getActiveNotes().subscribe((data: any) => {
+    this.homeService.getActiveNotes(this.userId).subscribe((data: any) => {
       this.activeNotes = data;
     });
   }
 
   editNote(note: NoteClass) {
-    console.log("note", note);
     this.noteDetail.controls["id"].setValue(note.id);
     this.noteDetail.controls["title"].setValue(note.title);
     this.noteDetail.controls["note"].setValue(note.note);
     this.noteDetail.controls["isActive"].setValue(note.isActive);
-    console.log(this.noteDetail);
   }
 
   updateNote() {
@@ -85,11 +95,9 @@ export class HomeComponent implements OnInit {
     this.noteObj.isActive = this.noteDetail.value.isActive;
 
     this.homeService.patchUpdateNote(this.noteObj).subscribe(res => {
-      console.log(res);
       this.getActiveNotes();
 
     }, err => {
-      console.log(err);
     });
   }
 
