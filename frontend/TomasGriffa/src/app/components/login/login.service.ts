@@ -10,8 +10,11 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
+  url: string = "https://ensolvers-challenge-production.up.railway.app/"
+
+
   public login(data: any) {
-    return this.http.post("http://localhost:8080/login", data);
+    return this.http.post(this.url + "/login", data);
   }
 
 
