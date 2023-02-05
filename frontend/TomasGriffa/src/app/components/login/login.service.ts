@@ -10,7 +10,7 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  url: string = "https://ensolvers-challenge-production.up.railway.app/"
+  url: string = "https://ensolvers-challenge-production.up.railway.app"
 
 
   public login(data: any) {
