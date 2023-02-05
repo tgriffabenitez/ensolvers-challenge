@@ -14,16 +14,19 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @CrossOrigin(origins = "https://ensolvers-challenge-tmgb.web.app/")
     @PostMapping(path = "/login")
     public ResponseEntity<?> login(@RequestBody  UserDTO userDTO, BindingResult bindingResult) {
         return userService.login(userDTO, bindingResult);
     }
 
+    @CrossOrigin(origins = "https://ensolvers-challenge-tmgb.web.app/")
     @GetMapping(path = "/{userId}/active")
     public ResponseEntity<?> listActiveNotes(@PathVariable Integer userId) {
         return userService.getUserActiveNotes(userId);
     }
 
+    @CrossOrigin(origins = "https://ensolvers-challenge-tmgb.web.app/")
     @GetMapping(path = "/{userId}/archived")
     public ResponseEntity<?> listArchivedNotes(@PathVariable Integer userId) {
         return userService.getUserArchivedNotes(userId);
