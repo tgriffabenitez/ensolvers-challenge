@@ -39,3 +39,7 @@ textarea {
     justify-content: space-around;
     flex-direction: column;
 }
+
+.modal .btn {
+    width: 100%;
+}
