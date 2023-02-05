@@ -30,10 +30,10 @@ export class LoginComponent {
       // guardo los datos del cliente en el localStorage
       localStorage.setItem("userId", res);
 
-      alert("Bienvenido!");
+      alert("Welcome!");
       this.router.navigate(['/home']);
     }, (err : any) => {
-      alert("Verifique los datos ingresados");
+      alert("Invalid email or password");
     })
 
 

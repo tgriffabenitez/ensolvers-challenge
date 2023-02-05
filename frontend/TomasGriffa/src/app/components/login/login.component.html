@@ -2,16 +2,16 @@
     <body class="text-center">
         <form #login="ngForm" class="form-signin" (ngSubmit)="onSumbitForm(login.value)">
             <img class="mb-4" src="https://media-exp1.licdn.com/dms/image/C4D0BAQGotAIhglEuDg/company-logo_200_200/0/1608559111807?e=2159024400&v=beta&t=hOVU0VitbA-e6K1hVPARLbbpf2OYgnZMpPQhM1waItg" alt="" style="width: 100%;">
-            <h1 class="h3 mb-3 font-weight-normal">Acceder</h1>
+            <h1 class="h3 mb-3 font-weight-normal">Login</h1>
             <input [(ngModel)]="email" type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email" required autofocus>
             <br>
-            <input [(ngModel)]="password" type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Contrasena" required>
+            <input [(ngModel)]="password" type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password" required>
             <div class="checkbox mb-3">
                 <label>
-                    <input type="checkbox" value="remember-me"> Recordarme
+                    <input type="checkbox" value="remember-me"> Remember me
                 </label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesion</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
         </form>
     </body>
 </div>
